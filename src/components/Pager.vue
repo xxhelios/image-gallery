@@ -6,7 +6,8 @@
       v-on:click="pageThrough(false)"
       :disabled="!!disablePageLeft"
     ></button>
-    <input type="text" :placeholder="currentPage" />
+    <!-- TODO: input field disabled, add feature to jump to typed page -->
+    <input type="text" :placeholder="currentPage" disabled />
     <span>of</span>
     <span>{{ this.totalPages }}</span>
     <button
