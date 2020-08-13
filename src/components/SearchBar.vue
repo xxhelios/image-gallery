@@ -1,14 +1,40 @@
 <template>
   <div id="search-bar">
     <span class="search-label">Search</span>
-    <input class="input-box" type="text" name id />
-    <span class="info-label">Display 0 of 100 images</span>
+    <input class="input-box" type="text" @input="searchImages" v-model="keyWords" />
+    <span
+      class="info-label"
+    >Display {{this.filteredImages.length}} of {{this.allImages.length}} images</span>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "SearchBar",
+  data() {
+    return {
+      keyWords: "",
+      filteredImages: [],
+    };
+  },
+  methods: {
+    ...mapActions(["fetchImages", "showFilteredImages"]),
+    searchImages() {
+      this.filteredImages = this.allImages.filter((image) => {
+        return (
+          image.title.toLowerCase().indexOf(this.keyWords.toLowerCase()) > -1
+        );
+      });
+      //Add toLowerCase to make search files non case sensitive.
+      this.showFilteredImages(this.filteredImages);
+    },
+  },
+  computed: mapGetters(["allImages"]),
+  created() {
+    this.fetchImages().then(() => (this.filteredImages = this.allImages));
+  },
 };
 </script>
 

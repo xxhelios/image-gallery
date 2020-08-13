@@ -8,7 +8,7 @@
         v-bind:image="image"
       />
     </div>
-    <Pager :key="allImages" />
+    <Pager v-if="isLoaded" />
   </div>
 </template>
 
@@ -19,16 +19,21 @@ import Pager from "./Pager";
 
 export default {
   name: "GridView",
+  data: () => {
+    return {
+      isLoaded: false,
+    };
+  },
   components: {
     ImageItem,
     Pager,
   },
   methods: {
-    ...mapActions(["fetchImages", "updateImages"]),
+    ...mapActions(["fetchImages"]),
   },
-  computed: mapGetters(["allImages", "imagesOnDisplay"]),
+  computed: mapGetters(["imagesOnDisplay"]),
   created() {
-    this.fetchImages();
+    this.fetchImages().then(() => (this.isLoaded = true));
   },
 };
 </script>

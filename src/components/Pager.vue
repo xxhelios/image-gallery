@@ -26,7 +26,6 @@ export default {
   name: "Pager",
   data() {
     return {
-      totalPages: "",
       currentPage: "",
       disablePageLeft: true,
       disablePageRight: false,
@@ -58,9 +57,8 @@ export default {
       this.disablePageRight = this.currentPage === this.totalPages;
     },
   },
-  computed: mapGetters(["allImages"]),
+  computed: mapGetters(["totalPages"]),
   created() {
-    this.totalPages = Math.ceil(this.allImages.length / 8);
     this.currentPage = 1;
   },
 };
