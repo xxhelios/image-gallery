@@ -45,11 +45,16 @@ export default {
     ...mapActions(["fetchImages", "updateImages"]),
     goToStart() {
       this.updateImages(0);
+      this.currentPage = 1;
+      this.disablePageLeft = this.currentPage === 1;
+      this.disablePageRight = this.currentPage === this.totalPages;
     },
     goToEnd() {
       const lastPage = this.totalPages;
       this.updateImages(lastPage * 8 - 8);
       this.currentPage = lastPage;
+      this.disablePageLeft = this.currentPage === 1;
+      this.disablePageRight = this.currentPage === this.totalPages;
     },
     goToPage() {},
     //TODO: refactor pager functions
