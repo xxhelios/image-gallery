@@ -20,5 +20,8 @@ img {
 }
 span {
   display: block;
+  font-size: 20px;
+  height: 40px;
+  line-height: 20px;
 }
 </style>

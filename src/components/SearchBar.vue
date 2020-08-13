@@ -21,11 +21,13 @@ export default {
 }
 .search-label {
   flex: 1;
+  font-size: 20px;
 }
 .input-box {
   flex: 3;
 }
 .info-label {
   flex: 3;
+  font-size: 20px;
 }
 </style>

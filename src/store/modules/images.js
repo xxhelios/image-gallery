@@ -1,29 +1,39 @@
 import axios from "axios";
 
 const state = {
-  images: {}
+  allImages: [],
+  imagesOnDisplay: []
 };
 
 const getters = {
-  allImages: state => state.images
+  allImages: state => state.allImages,
+  imagesOnDisplay: state => state.imagesOnDisplay
 };
 
 const actions = {
   async fetchImages({ commit }) {
     const response = await axios.get('./data.json');
-    console.log('@@@@@@@ data: ', response.data.photos.photo);
-    commit("loadImages", response.data.photos.photo);
+    const wholeImageList = response.data.photos.photo;
+    const imageList = response.data.photos.photo.slice(0, 8);
+    //TODO: Add validations for data
+    commit('persistAllImages', wholeImageList);
+    commit("displayImages", imageList);
+  },
+  async updateImages({ commit }, indexFrom) {
+    const newImageList = state.allImages.slice(indexFrom, indexFrom + 8);
+    commit('displayImages', newImageList);
   },
   async searchImages() {
     // search images
   },
-  async updateImageDetail() {
+  async saveImageDetails() {
     // update image details
   }
 };
 
 const mutations = {
-  loadImages: (state, images) => (state.images = images),
+  persistAllImages: (state, images) => (state.allImages = images),
+  displayImages: (state, images) => (state.imagesOnDisplay = images)
 };
 
 export default {
