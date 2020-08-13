@@ -1,24 +1,24 @@
 <template>
   <div id="app">
     <h1>Image Gallery</h1>
-    <Search />
-    <Grid />
+    <SearchBar />
+    <GridView />
   </div>
 </template>
 
 <script>
-import Search from "./components/Search";
-import Grid from "./components/Grid";
+import SearchBar from "./components/SearchBar";
+import GridView from "./components/GridView";
 export default {
   name: "App",
   components: {
-    Search,
-    Grid,
+    SearchBar,
+    GridView,
   },
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

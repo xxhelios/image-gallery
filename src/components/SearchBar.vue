@@ -8,11 +8,11 @@
 
 <script>
 export default {
-  name: "Search",
+  name: "SearchBar",
 };
 </script>
 
-<style>
+<style scoped>
 #search-bar {
   display: flex;
   margin: auto;
