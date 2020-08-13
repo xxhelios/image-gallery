@@ -12,4 +12,7 @@ export default {
 </script>
 
 <style>
+#grid-view {
+  height: 400px;
+}
 </style>
