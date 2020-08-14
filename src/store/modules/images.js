@@ -4,14 +4,14 @@ const state = {
   allImages: [],
   imagesOnDisplay: [],
   filteredImages: [],
-  totalPages: ""
+  totalPages: "",
 };
 
 const getters = {
   allImages: state => state.allImages,
   filteredImages: state => state.filteredImages,
   imagesOnDisplay: state => state.imagesOnDisplay,
-  totalPages: state => state.totalPages
+  totalPages: state => state.totalPages,
 };
 
 const actions = {
@@ -37,8 +37,9 @@ const actions = {
     commit("displayImages", filteredImagesOnDisplay);
     commit('updateTotalPages', totalPages);
   },
-  async saveImageDetails() {
-    // update image details
+  saveImageDetails(index, image) {
+    console.log('@@@ in saveImageDeatils, index: ', index);
+    console.log('@@@ in saveImageDeatils, image: ', image);
   }
 };
 
@@ -46,7 +47,7 @@ const mutations = {
   persistAllImages: (state, images) => (state.allImages = images),
   persistFilteredImages: (state, images) => (state.filteredImages = images),
   displayImages: (state, images) => (state.imagesOnDisplay = images),
-  updateTotalPages: (state, pages) => (state.totalPages = pages)
+  updateTotalPages: (state, pages) => (state.totalPages = pages),
 };
 
 export default {

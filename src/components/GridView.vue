@@ -19,7 +19,7 @@ import Pager from "./Pager";
 
 export default {
   name: "GridView",
-  data: () => {
+  data() {
     return {
       isLoaded: false,
     };
@@ -38,7 +38,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #grid-view {
   margin-top: 40px;
   font-size: 20px;
