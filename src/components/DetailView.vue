@@ -1,8 +1,8 @@
 <template>
   <div id="detail-view">
-    <div class="blur"></div>
+    <div class="blur" @click="closeDetailView"></div>
     <div class="detail-container">
-      <div class="view-title">{{this.image.title}}</div>
+      <div class="view-title">{{ this.image.title }}</div>
       <div class="title-edit">
         <span>Title</span>
         <input type="text" v-model="titleInput" />
@@ -16,16 +16,16 @@
         TODO: Create something like <html-textarea> to make this field editable and clickable.
         -->
         <div v-if="hasDescription" contenteditable="false" v-html="descriptionInput"></div>
-        <textarea v-if="!hasDescription" name id cols="30" rows="10" v-model="descriptionInput"></textarea>
+        <textarea v-if="!hasDescription" v-model="descriptionInput"></textarea>
       </div>
       <div class="domain">
         <span>Public Domain</span>
         <input type="checkbox" v-model="isPublic" />
       </div>
       <div class="info">
-        <div>ID: {{this.image.id}}</div>
-        <div>Owner Name: {{this.image.ownername}}</div>
-        <div>Image Dimensions: {{this.image.width_m}} x {{this.image.height_m}}</div>
+        <div>ID: {{ this.image.id }}</div>
+        <div>Owner Name: {{ this.image.ownername }}</div>
+        <div>Image Dimensions: {{ this.image.width_m }} x {{ this.image.height_m }}</div>
       </div>
       <div class="buttons">
         <button @click="closeDetailView">Cancel</button>
@@ -71,7 +71,7 @@ export default {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 99;
   position: absolute;
   background-color: rgb(107, 104, 104);
   opacity: 0.8;
@@ -124,7 +124,7 @@ textarea {
   margin-right: 100px;
   height: 150px;
   background-color: #ffffff;
-  border: 1px solid black;
+  border: 1px solid #000000;
   text-align: left;
 }
 .domain {

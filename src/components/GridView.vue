@@ -46,25 +46,28 @@ export default {
   margin: auto;
 }
 .grid {
-  min-height: 634px;
   display: grid;
+  min-height: calc(317px * 2);
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(2, 50%);
 }
 @media screen and (max-width: 1300px) {
   .grid {
+    min-height: calc(310px * 3);
     grid-template-columns: repeat(3, 33.3%);
     grid-template-rows: repeat(3, 33.3%);
   }
 }
 @media screen and (max-width: 1000px) {
   .grid {
+    min-height: calc(310px * 4);
     grid-template-columns: repeat(2, 50%);
     grid-template-rows: repeat(4, 25%);
   }
 }
 @media screen and (max-width: 650px) {
   .grid {
+    min-height: calc(310px * 8);
     grid-template-columns: repeat(1, 100%);
     grid-template-rows: repeat(8, 12.5%);
   }

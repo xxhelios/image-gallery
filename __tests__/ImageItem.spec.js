@@ -4,7 +4,7 @@ import ImageItem from "../src/components/ImageItem";
 describe('ImageItem.vue', () => {
   const mockImage = {
     title: "Glass",
-    url_sq: "glass.jpg"
+    url_m: "glass.jpg"
   };
 
   it('contains image item container', () => {

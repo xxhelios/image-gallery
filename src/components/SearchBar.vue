@@ -4,7 +4,7 @@
     <input class="input-box" type="text" @input="searchImages" v-model="keyWords" />
     <span
       class="info-label"
-    >Display {{this.filteredImages.length}} of {{this.allImages.length}} images</span>
+    >Display {{ this.filteredImages.length }} of {{ this.allImages.length }} images</span>
   </div>
 </template>
 

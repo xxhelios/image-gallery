@@ -22,20 +22,20 @@ const getters = {
 
 const actions = {
   async fetchImages({ commit }) {
-    const response = await axios.get('./data.json');
+    const response = await axios.get("./data.json");
     const wholeImageList = response.data.photos.photo;
     //TODO: Add validations for data
     const imagesOnDisplay = response.data.photos.photo.slice(0, 8);
     const totalPages = Math.ceil(wholeImageList.length / 8);
     commit("persistAllImages", wholeImageList);
     commit("persistFilteredImages", wholeImageList);
-    commit('displayImages', imagesOnDisplay);
-    commit('updateTotalPages', totalPages);
-    commit('updateCurrentPage', 1);
+    commit("displayImages", imagesOnDisplay);
+    commit("updateTotalPages", totalPages);
+    commit("updateCurrentPage", 1);
   },
   updateImages({ commit }, payload) {
     const newImageList = state.allImages.slice(payload.indexFrom, payload.indexFrom + 8);
-    commit('displayImages', newImageList);
+    commit("displayImages", newImageList);
     commit("updateCurrentPage", payload.currentPage);
     commit("updateButtonStatus");
   },
@@ -44,8 +44,8 @@ const actions = {
     const totalPages = Math.ceil(images.length / 8);
     commit("persistFilteredImages", images);
     commit("displayImages", filteredImagesOnDisplay);
-    commit('updateTotalPages', totalPages);
-    commit('updateCurrentPage', 1);
+    commit("updateTotalPages", totalPages);
+    commit("updateCurrentPage", 1);
     commit("updateButtonStatus");
   },
   saveImageDetails({ commit }, image) {
@@ -60,8 +60,8 @@ const mutations = {
   updateTotalPages: (state, pages) => (state.totalPages = pages),
   updateCurrentPage: (state, page) => (state.currentPage = page),
   updateImageItem: (state, image) => {
-    state.allImages.forEach((orgImage, index) => {
-      if (orgImage.id === image.id) {
+    state.allImages.forEach((originalImage, index) => {
+      if (originalImage.id === image.id) {
         state.allImages[index] = image;
       }
     });
