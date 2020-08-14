@@ -28,44 +28,37 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Pager",
-  data() {
-    return {
-      currentPage: "",
-      disablePageLeft: true,
-      disablePageRight: false,
-    };
-  },
   methods: {
-    ...mapActions(["fetchImages", "updateImages"]),
+    ...mapActions(["updateImages"]),
     goToStart() {
-      this.updateImages(0);
-      this.currentPage = 1;
-      this.updateButtonStatus();
+      this.updateImages({
+        indexFrom: 0,
+        currentPage: 1,
+      });
     },
     goToEnd() {
       const lastPage = this.totalPages;
-      this.updateImages(lastPage * 8 - 8);
-      this.currentPage = lastPage;
-      this.updateButtonStatus();
-      //TODO: fix search when on last page, current page not correct
+      this.updateImages({
+        indexFrom: lastPage * 8 - 8,
+        currentPage: lastPage,
+      });
     },
     pageThrough(isPageRight) {
       const newPage = isPageRight ? this.currentPage + 1 : this.currentPage - 1;
       const indexFrom = (newPage - 1) * 8;
-      this.updateImages(indexFrom);
-      this.currentPage = newPage;
-      this.updateButtonStatus();
+      this.updateImages({
+        indexFrom,
+        currentPage: newPage,
+      });
     },
     //TODO: goToPage() {},
-    updateButtonStatus() {
-      this.disablePageLeft = this.currentPage === 1;
-      this.disablePageRight = this.currentPage === this.totalPages;
-    },
   },
-  computed: mapGetters(["totalPages"]),
-  created() {
-    this.currentPage = 1;
-  },
+  computed: mapGetters([
+    "totalPages",
+    "currentPage",
+    "disablePageLeft",
+    "disablePageRight",
+  ]),
 };
 </script>
 

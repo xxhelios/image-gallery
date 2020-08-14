@@ -5,6 +5,9 @@ const state = {
   imagesOnDisplay: [],
   filteredImages: [],
   totalPages: "",
+  currentPage: "",
+  disablePageLeft: true,
+  disablePageRight: false,
 };
 
 const getters = {
@@ -12,6 +15,9 @@ const getters = {
   filteredImages: state => state.filteredImages,
   imagesOnDisplay: state => state.imagesOnDisplay,
   totalPages: state => state.totalPages,
+  currentPage: state => state.currentPage,
+  disablePageLeft: state => state.disablePageLeft,
+  disablePageRight: state => state.disablePageRight
 };
 
 const actions = {
@@ -25,10 +31,13 @@ const actions = {
     commit("persistFilteredImages", wholeImageList);
     commit('displayImages', imagesOnDisplay);
     commit('updateTotalPages', totalPages);
+    commit('updateCurrentPage', 1);
   },
-  updateImages({ commit }, indexFrom) {
-    const newImageList = state.allImages.slice(indexFrom, indexFrom + 8);
+  updateImages({ commit }, payload) {
+    const newImageList = state.allImages.slice(payload.indexFrom, payload.indexFrom + 8);
     commit('displayImages', newImageList);
+    commit("updateCurrentPage", payload.currentPage);
+    commit("updateButtonStatus");
   },
   showFilteredImages({ commit }, images) {
     const filteredImagesOnDisplay = images.slice(0, 8);
@@ -36,6 +45,8 @@ const actions = {
     commit("persistFilteredImages", images);
     commit("displayImages", filteredImagesOnDisplay);
     commit('updateTotalPages', totalPages);
+    commit('updateCurrentPage', 1);
+    commit("updateButtonStatus");
   },
   saveImageDetails({ commit }, image) {
     commit("updateImageItem", image);
@@ -47,12 +58,17 @@ const mutations = {
   persistFilteredImages: (state, images) => (state.filteredImages = images),
   displayImages: (state, images) => (state.imagesOnDisplay = images),
   updateTotalPages: (state, pages) => (state.totalPages = pages),
+  updateCurrentPage: (state, page) => (state.currentPage = page),
   updateImageItem: (state, image) => {
     state.allImages.forEach((orgImage, index) => {
       if (orgImage.id === image.id) {
         state.allImages[index] = image;
       }
     });
+  },
+  updateButtonStatus: (state) => {
+    state.disablePageLeft = state.currentPage === 1;
+    state.disablePageRight = state.currentPage === state.totalPages;
   }
 };
 
