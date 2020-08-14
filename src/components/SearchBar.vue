@@ -46,6 +46,7 @@ export default {
   margin: auto;
   border-bottom: 2px solid #000000;
   padding: 20px 0;
+  width: 80%;
 }
 .search-label {
   flex: 1;
