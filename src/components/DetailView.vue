@@ -67,7 +67,7 @@ export default {
 
 <style scoped>
 .blur {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   top: 0;
   left: 0;
@@ -80,12 +80,13 @@ export default {
   position: absolute;
   height: 600px;
   width: 40%;
+  min-width: 400px;
   top: 15%;
   left: 30%;
   margin: auto;
   background-color: #f2f0ef;
   z-index: 100;
-  opacity: 1 !important;
+  opacity: 1;
 }
 .view-title {
   width: 90%;
@@ -121,7 +122,7 @@ span {
 textarea {
   flex: 2;
   order: 2;
-  margin-right: 100px;
+  margin-right: 10%;
   height: 150px;
   background-color: #ffffff;
   border: 1px solid #000000;
@@ -143,5 +144,24 @@ textarea {
   text-align: left;
   padding-left: 50px;
   line-height: 30px;
+}
+.buttons {
+  display: flex;
+  margin: 30px auto;
+  width: 90%;
+  border-top: 2px solid #000000;
+}
+.btn-cancel,
+.btn-save {
+  flex: 1;
+  margin: 30px 50px;
+  height: 50px;
+  background-color: #1f82f2;
+  color: #fff;
+  font-size: 28px;
+  border-radius: 2px;
+  cursor: pointer;
+  outline: none;
+  border-style: none;
 }
 </style>
