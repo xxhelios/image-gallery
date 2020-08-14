@@ -6,13 +6,12 @@
       v-bind:image="image"
       v-on:showHide="showHideDetails"
     />
-    <img v-bind:src="this.image.url_sq" @click="showDetails" />
+    <img v-bind:src="createImage" @click="showDetails" @error="imageError=true" />
     <span>{{ this.image.title }}</span>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
 import DetailView from "./DetailView";
 
 export default {
@@ -21,13 +20,13 @@ export default {
   data() {
     return {
       show: false,
+      imageError: false,
     };
   },
   components: {
     DetailView,
   },
   methods: {
-    ...mapActions(["saveImageDetails"]),
     showDetails() {
       this.show = true;
     },
@@ -35,7 +34,11 @@ export default {
       this.show = show;
     },
   },
-  computed: mapGetters(["showDetailView"]),
+  computed: {
+    createImage() {
+      return this.imageError ? "./default.jpg" : this.image.url_m;
+    },
+  },
 };
 //TODO: hide images that have bad url
 </script>

@@ -3,35 +3,60 @@
     <div class="view-title">{{this.image.title}}</div>
     <div class="title-edit">
       <span>Title</span>
-      <input type="text" :placeholder="this.image.title" />
+      <input type="text" v-model="titleInput" />
     </div>
     <div class="description">
       <span>Description</span>
-      <input type="text" :placeholder="this.image.description.content" />
+      <!--
+        For description field, some of the content may contain link in html format.
+        If the content is editable, then the link is unclickable.
+        Currently the description field is only editable when there's no content.
+        TODO: Create something like <html-textarea> to make this field editable and clickable.
+      -->
+      <div v-if="hasDescription" contenteditable="false" v-html="descriptionInput"></div>
+      <textarea v-if="!hasDescription" name id cols="30" rows="10" v-model="descriptionInput"></textarea>
     </div>
     <div class="domain">
       <span>Public Domain</span>
-      <input type="checkbox" :checked="this.image.ispublic" />
+      <input type="checkbox" v-model="isPublic" />
     </div>
     <div class="info">
       <div>ID: {{this.image.id}}</div>
       <div>Owner Name: {{this.image.ownername}}</div>
-      <div>Image Dimensions: {{this.image.width_sq}} x {{this.image.height_sq}}</div>
+      <div>Image Dimensions: {{this.image.width_m}} x {{this.image.height_m}}</div>
     </div>
     <div class="buttons">
       <button @click="closeDetailView">Cancel</button>
-      <button>Save</button>
+      <button @click="saveChanges">Save</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "DetailView",
   props: ["image"],
+  data() {
+    return {
+      titleInput: this.image.title,
+      descriptionInput: this.image.description._content,
+      isPublic: this.image.ispublic,
+      hasDescription: !!this.image.description._content,
+    };
+  },
   methods: {
+    ...mapActions(["saveImageDetails"]),
     closeDetailView() {
       this.$emit("showHide", false);
+    },
+    saveChanges() {
+      this.image["title"] = this.titleInput;
+      this.image.description["_content"] = this.descriptionInput;
+      this.image["ispublic"] = this.isPublic;
+      this.saveImageDetails(this.image);
+      this.closeDetailView();
     },
   },
 };
@@ -78,11 +103,15 @@ span {
   display: flex;
   margin: 20px auto;
 }
-.description input {
+.description div,
+textarea {
   flex: 2;
   order: 2;
   margin-right: 100px;
   height: 150px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  text-align: left;
 }
 .domain {
   display: flex;

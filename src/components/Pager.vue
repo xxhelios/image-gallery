@@ -43,6 +43,7 @@ export default {
       this.updateImages(lastPage * 8 - 8);
       this.currentPage = lastPage;
       this.updateButtonStatus();
+      //TODO: fix search when on last page, current page not correct
     },
     pageThrough(isPageRight) {
       const newPage = isPageRight ? this.currentPage + 1 : this.currentPage - 1;
@@ -88,5 +89,6 @@ button {
   border-style: none;
   margin: 0 5px;
   background-color: rgba(72, 73, 83, 0.392);
+  font-size: 28px;
 }
 </style>

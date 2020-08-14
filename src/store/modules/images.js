@@ -37,9 +37,8 @@ const actions = {
     commit("displayImages", filteredImagesOnDisplay);
     commit('updateTotalPages', totalPages);
   },
-  saveImageDetails(index, image) {
-    console.log('@@@ in saveImageDeatils, index: ', index);
-    console.log('@@@ in saveImageDeatils, image: ', image);
+  saveImageDetails({ commit }, image) {
+    commit("updateImageItem", image);
   }
 };
 
@@ -48,6 +47,13 @@ const mutations = {
   persistFilteredImages: (state, images) => (state.filteredImages = images),
   displayImages: (state, images) => (state.imagesOnDisplay = images),
   updateTotalPages: (state, pages) => (state.totalPages = pages),
+  updateImageItem: (state, image) => {
+    state.allImages.forEach((orgImage, index) => {
+      if (orgImage.id === image.id) {
+        state.allImages[index] = image;
+      }
+    });
+  }
 };
 
 export default {
