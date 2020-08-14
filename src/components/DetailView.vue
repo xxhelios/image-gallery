@@ -28,8 +28,8 @@
         <div>Image Dimensions: {{ this.image.width_m }} x {{ this.image.height_m }}</div>
       </div>
       <div class="buttons">
-        <button @click="closeDetailView">Cancel</button>
-        <button @click="saveChanges">Save</button>
+        <button class="btn-cancel" @click="closeDetailView">Cancel</button>
+        <button class="btn-save" @click="saveChanges">Save</button>
       </div>
     </div>
   </div>

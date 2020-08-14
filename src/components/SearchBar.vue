@@ -23,17 +23,19 @@ export default {
     ...mapActions(["fetchImages", "showFilteredImages"]),
     searchImages() {
       this.filteredImages = this.allImages.filter((image) => {
+        // Add toLowerCase to make search action not case sensitive.
         return (
           image.title.toLowerCase().indexOf(this.keyWords.toLowerCase()) > -1
         );
       });
-      //Add toLowerCase to make search files non case sensitive.
       this.showFilteredImages(this.filteredImages);
     },
   },
   computed: mapGetters(["allImages"]),
   created() {
-    this.fetchImages().then(() => (this.filteredImages = this.allImages));
+    this.fetchImages().then(() => {
+      this.filteredImages = this.allImages;
+    });
   },
 };
 </script>
