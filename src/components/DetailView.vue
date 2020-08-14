@@ -1,33 +1,36 @@
 <template>
   <div id="detail-view">
-    <div class="view-title">{{this.image.title}}</div>
-    <div class="title-edit">
-      <span>Title</span>
-      <input type="text" v-model="titleInput" />
-    </div>
-    <div class="description">
-      <span>Description</span>
-      <!--
+    <div class="blur"></div>
+    <div class="detail-container">
+      <div class="view-title">{{this.image.title}}</div>
+      <div class="title-edit">
+        <span>Title</span>
+        <input type="text" v-model="titleInput" />
+      </div>
+      <div class="description">
+        <span>Description</span>
+        <!--
         For description field, some of the content may contain link in html format.
         If the content is editable, then the link is unclickable.
         Currently the description field is only editable when there's no content.
         TODO: Create something like <html-textarea> to make this field editable and clickable.
-      -->
-      <div v-if="hasDescription" contenteditable="false" v-html="descriptionInput"></div>
-      <textarea v-if="!hasDescription" name id cols="30" rows="10" v-model="descriptionInput"></textarea>
-    </div>
-    <div class="domain">
-      <span>Public Domain</span>
-      <input type="checkbox" v-model="isPublic" />
-    </div>
-    <div class="info">
-      <div>ID: {{this.image.id}}</div>
-      <div>Owner Name: {{this.image.ownername}}</div>
-      <div>Image Dimensions: {{this.image.width_m}} x {{this.image.height_m}}</div>
-    </div>
-    <div class="buttons">
-      <button @click="closeDetailView">Cancel</button>
-      <button @click="saveChanges">Save</button>
+        -->
+        <div v-if="hasDescription" contenteditable="false" v-html="descriptionInput"></div>
+        <textarea v-if="!hasDescription" name id cols="30" rows="10" v-model="descriptionInput"></textarea>
+      </div>
+      <div class="domain">
+        <span>Public Domain</span>
+        <input type="checkbox" v-model="isPublic" />
+      </div>
+      <div class="info">
+        <div>ID: {{this.image.id}}</div>
+        <div>Owner Name: {{this.image.ownername}}</div>
+        <div>Image Dimensions: {{this.image.width_m}} x {{this.image.height_m}}</div>
+      </div>
+      <div class="buttons">
+        <button @click="closeDetailView">Cancel</button>
+        <button @click="saveChanges">Save</button>
+      </div>
     </div>
   </div>
 </template>
@@ -63,15 +66,26 @@ export default {
 </script>
 
 <style scoped>
-#detail-view {
+.blur {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  position: absolute;
+  background-color: rgb(107, 104, 104);
+  opacity: 0.8;
+}
+.detail-container {
   position: absolute;
   height: 600px;
   width: 40%;
   top: 15%;
   left: 30%;
   margin: auto;
-  background-color: rgb(198, 196, 194);
+  background-color: #f2f0ef;
   z-index: 100;
+  opacity: 1 !important;
 }
 .view-title {
   width: 90%;

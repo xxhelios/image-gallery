@@ -45,13 +45,15 @@ export default {
 
 <style scoped>
 img {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 }
 span {
   display: block;
   font-size: 20px;
   height: 40px;
   line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 </style>

@@ -42,14 +42,34 @@ export default {
 #grid-view {
   margin-top: 40px;
   font-size: 20px;
+  width: 80%;
+  margin: auto;
 }
 .grid {
-  min-height: 580px;
+  min-height: 634px;
   display: grid;
   grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(2, 50%);
+}
+@media screen and (max-width: 1300px) {
+  .grid {
+    grid-template-columns: repeat(3, 33.3%);
+    grid-template-rows: repeat(3, 33.3%);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(4, 25%);
+  }
+}
+@media screen and (max-width: 650px) {
+  .grid {
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: repeat(8, 12.5%);
+  }
 }
 .grid-item {
-  padding: 20px;
+  padding: 15px 10px 5px 10px;
 }
 </style>
