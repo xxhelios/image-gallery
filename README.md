@@ -1,5 +1,9 @@
 # image-gallery
 
+## See demo page here:
+
+https://xxhelios.github.io/image-gallery/
+
 ## Project setup
 ```
 npm install
