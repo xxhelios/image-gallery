@@ -95,6 +95,8 @@ export default {
   height: 60px;
   line-height: 60px;
   font-size: 48px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .title-edit {
   display: flex;
