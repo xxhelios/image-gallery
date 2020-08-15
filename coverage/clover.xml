@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1597445140653" clover="3.2.0">
-  <project timestamp="1597445140653" name="All files">
+<coverage generated="1597449990225" clover="3.2.0">
+  <project timestamp="1597449990225" name="All files">
     <metrics statements="32" coveredstatements="32" conditionals="4" coveredconditionals="4" methods="18" coveredmethods="18" elements="54" coveredelements="54" complexity="0" loc="32" ncloc="32" packages="1" files="5" classes="5"/>
     <file name="DetailView.vue" path="/Users/elsa/Documents/Code/Ithaka-assignment/image-gallery/image-gallery/src/components/DetailView.vue">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>

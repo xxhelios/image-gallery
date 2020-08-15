@@ -13,16 +13,13 @@ or, if prefer to use vue ui, run
 ```
 vue ui
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
+then click "Task" -> "serve" -> "Run task" -> "Open app"
 
 ### Run uni tests
 ```
 npm test
 ```
+Or through "vui ui", go to "Task" -> "test" -> "Run task"
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
