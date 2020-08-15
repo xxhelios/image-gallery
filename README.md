@@ -19,15 +19,11 @@ vue ui
 ```
 then click "Task" -> "serve" -> "Run task" -> "Open app"
 
-### Run uni tests
+### Run unit tests
 ```
 npm test
 ```
 Or through "vui ui", go to "Task" -> "test" -> "Run task"
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 
 ### Feature stories
 - Image Grid
