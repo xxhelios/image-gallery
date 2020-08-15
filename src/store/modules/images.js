@@ -24,7 +24,6 @@ const actions = {
   async fetchImages({ commit }) {
     const response = await axios.get("./data.json");
     const wholeImageList = response.data.photos.photo;
-    //TODO: Add validations for data
     const imagesOnDisplay = response.data.photos.photo.slice(0, 8);
     const totalPages = Math.ceil(wholeImageList.length / 8);
     commit("persistAllImages", wholeImageList);
