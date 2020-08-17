@@ -23,7 +23,7 @@ then click "Task" -> "serve" -> "Run task" -> "Open app"
 ```
 npm test
 ```
-Or through "vui ui", go to "Task" -> "test" -> "Run task"
+Or through "vue ui", go to "Task" -> "test" -> "Run task"
 
 ### Feature stories
 - Image Grid
