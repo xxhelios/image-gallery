@@ -52,4 +52,5 @@ Or through "vui ui", go to "Task" -> "test" -> "Run task"
   - Currently showing 8 images per page, make the number dynamic.
   - Add "Go to page" feature, user can type in page number and go to that page directly.
   - Make description field always editable and clickable if it contains link.
+  - If data is fetched from an actual server, can add lazy loadings when wait for ajax calls.
 
